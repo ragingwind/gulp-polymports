@@ -1,11 +1,11 @@
 {
-  "name": "gulp-cspify",
+  "name": "gulp-htmlimport",
   "version": "0.0.1",
-  "description": "Make separated files for CSP",
+  "description": "Generate html having links for imports",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.comragingwind/gulp-csp-fixer"
+    "url": "git://github.comragingwind/gulp-htmlimport"
   },
   "author": {
     "name": "Jimmy Moon",
@@ -27,13 +27,11 @@
     "chrome"
   ],
   "dependencies": {
-    "cheerio": "^0.17.0",
-    "dom-serializer": "^0.0.1",
-    "gulp-util": "^3.0.0",
-    "mkdirp": "^0.5.0",
-    "through2": "^0.6.1"
+    "through2": "^0.6.1",
+    "vinyl": "^0.4.3"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "cheerio": "^0.18.0"
   }
 }
