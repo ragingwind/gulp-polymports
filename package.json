@@ -1,11 +1,11 @@
 {
-  "name": "gulp-htmlimport",
-  "version": "0.0.1",
+  "name": "gulp-importlink",
+  "version": "0.0.0",
   "description": "Generate html having links for imports",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.comragingwind/gulp-htmlimport"
+    "url": "git://github.comragingwind/gulp-importlink"
   },
   "author": {
     "name": "Jimmy Moon",

@@ -3,7 +3,7 @@
 var through = require('through2');
 var File = require('vinyl');
 
-var htmlimport = {
+var importlink = {
   src: function(imports) {
     var html = ['<!doctype html>', '<html>', '<head>'];
 
@@ -23,4 +23,4 @@ var htmlimport = {
   }
 };
 
-module.exports = htmlimport;
+module.exports = importlink;

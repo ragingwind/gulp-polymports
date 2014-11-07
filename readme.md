@@ -1,11 +1,11 @@
-# [gulp](http://gulpjs.com)-htmlimport
+# [gulp](http://gulpjs.com)-importlink
 
 > Generator a html having [HTML import links](http://www.w3.org/TR/html-imports/#link-type-import)
 
 ## Install
 
 ```sh
-$ npm install --save-dev gulp-htmlimport
+$ npm install --save-dev gulp-importlink
 ```
 
 
@@ -14,7 +14,7 @@ $ npm install --save-dev gulp-htmlimport
 ```js
 var gulp = require('gulp');
 var vulcanize = require('gulp-vulcanize');
-var htmlimport = require('gulp-htmlimport');
+var importlink = require('gulp-importlink');
 var bowercfg = require('bower-config').read();
 
 gulp.task('default', function () {
@@ -22,7 +22,7 @@ gulp.task('default', function () {
     return path.join(bowercfg.cwd, bowercfg.directory, name, name + 'js');
   };
 
-  return htmlimport({
+  return importlink({
     imports: [
       polypath('core-scaffold'),
       polypath('core-toolbar'),
@@ -38,7 +38,7 @@ gulp.task('default', function () {
 
 ## API
 
-### htmlimport(options)
+### importlink(options)
 
 #### options.imports
 
