@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 var path = require('path');
-var htmlimport = require('./');
+var importlink = require('./');
 var cheerio = require('cheerio');
 
 /* generated html sample
@@ -26,7 +26,7 @@ it ('should generated links for import', function(cb) {
     polypath('core-header-panel')
   ];
 
-  var stream = htmlimport.src(srcs);
+  var stream = importlink.src(srcs);
 
   stream.on('data', function(file) {;
     var html = file.contents.toString();
