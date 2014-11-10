@@ -1,11 +1,11 @@
-# [gulp](http://gulpjs.com)-importlink
+# [gulp](http://gulpjs.com)-polymports
 
-> Generator a html having [HTML import links](http://www.w3.org/TR/html-imports/#link-type-import)
+> Generator a html having [HTML Import links](http://www.w3.org/TR/html-imports/#link-type-import) for Polymer elements
 
 ## Install
 
 ```sh
-$ npm install --save-dev gulp-importlink
+$ npm install --save-dev gulp-polymports
 ```
 
 
@@ -13,8 +13,9 @@ $ npm install --save-dev gulp-importlink
 
 ```js
 var gulp = require('gulp');
+var path = require('path');
 var vulcanize = require('gulp-vulcanize');
-var importlink = require('gulp-importlink');
+var polymports = require('gulp-polymports');
 var bowercfg = require('bower-config').read();
 
 gulp.task('default', function () {
@@ -22,13 +23,11 @@ gulp.task('default', function () {
     return path.join(bowercfg.cwd, bowercfg.directory, name, name + 'js');
   };
 
-  return importlink({
-    imports: [
+  return polymports([
       polypath('core-scaffold'),
       polypath('core-toolbar'),
       polypath('core-header-panel')
-    ]
-  })
+  ])
   .pipe(vulcanize({
     csp:true
   }))
@@ -38,7 +37,7 @@ gulp.task('default', function () {
 
 ## API
 
-### importlink(options)
+### polymports(options)
 
 #### options.imports
 

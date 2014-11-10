@@ -1,11 +1,11 @@
 {
-  "name": "gulp-importlink",
+  "name": "gulp-polymports",
   "version": "0.0.1",
   "description": "Generate html having links for imports",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.comragingwind/gulp-importlink"
+    "url": "git://github.comragingwind/gulp-polymports"
   },
   "author": {
     "name": "Jimmy Moon",
@@ -27,6 +27,7 @@
     "chrome"
   ],
   "dependencies": {
+    "bower-config": "^0.5.2",
     "through2": "^0.6.1",
     "vinyl": "^0.4.3"
   },
