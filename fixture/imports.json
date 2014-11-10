@@ -1,0 +1,16 @@
+{
+  "components_from_file.html": {
+    "imports": [
+      "core-scaffold",
+      "core-toolbar",
+      "core-header-panel"
+    ]
+  },
+  "components2_from_file.html": {
+    "imports": [
+      "core-ajax",
+      "core-animation",
+      "core-menu"
+    ]
+  }
+}
