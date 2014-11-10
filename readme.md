@@ -16,18 +16,24 @@ var gulp = require('gulp');
 var path = require('path');
 var vulcanize = require('gulp-vulcanize');
 var polymports = require('gulp-polymports');
-var bowercfg = require('bower-config').read();
 
 gulp.task('default', function () {
-  var polypath = function(name) {
-    return path.join(bowercfg.cwd, bowercfg.directory, name, name + 'js');
-  };
-
-  return polymports([
-      polypath('core-scaffold'),
-      polypath('core-toolbar'),
-      polypath('core-header-panel')
-  ])
+  return polymports({
+    "components.html": {
+      imports: [
+        'core-scaffold',
+        'core-toolbar',
+        'core-header-panel'
+      ],
+      basepath: require('bower-config').read().directory
+    },
+    "animations.html": {
+      imports: [
+        'core-ajax',
+        'core-animation'
+      ]
+    }
+  })
   .pipe(vulcanize({
     csp:true
   }))
@@ -37,13 +43,21 @@ gulp.task('default', function () {
 
 ## API
 
-### polymports(options)
+### polymports(configs)
 
-#### options.imports
+The key name should be filename what you want. the name will be passed through [vinyl](http://goo.gl/rfHo00)'s path property on the stream. If configs type is string, that mean is config file as json, this plugin will try to load config data from file.
+
+#### configs.imports
 
 Type: `Array`
 
-The target components list to import. this plugin also supports [glob pattern](https://github.com/isaacs/node-glob)
+The component name list to import.
+
+#### configs.basepath
+
+Type: `String`
+
+Pass a new base path If you want to change to what you want to it, which is not in .bowerrc.
 
 ## License
 
