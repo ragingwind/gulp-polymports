@@ -23,7 +23,7 @@
   ],
   "keywords": [
     "polymer",
-    "vulcanize"
+    "vulcanize",
     "gulpplugin",
     "csp",
     "chrome"
