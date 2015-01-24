@@ -4,6 +4,8 @@ var path = require('path');
 var through = require('through2');
 var bowercfg = require('bower-config').read();
 var File = require('vinyl');
+var fs = require('fs');
+var gutil = require('gulp-util');
 
 module.exports = {
   src: function(configs) {
@@ -14,7 +16,7 @@ module.exports = {
       configs = require(configs);
     }
 
-    // we must be needed configs
+    // configs must be required
     if (!configs) {
       throw new Error('We need a link list for HTML Import');
     }
@@ -29,8 +31,20 @@ module.exports = {
       }
 
       component.imports.forEach(function(name) {
-        output.push('<link rel="import" href="' +
-            path.join(component.basepath, name, name + '.html') + '">');
+        var element = path.join(component.basepath, name);
+
+        try {
+          if (fs.statSync(element).isDirectory()) {
+            element = path.join(element, name + '.html');
+          }
+          if (!fs.existsSync(path.resolve(element))) {
+            throw 'No such imports file ' + element;
+          }
+        } catch (e) {
+          throw new gutil.PluginError('gulp-polymports', e.message);
+        }
+
+        output.push('\t<link rel="import" href="' + element + '">');
       });
 
       output.push('</head>', '</html>');

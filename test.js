@@ -2,9 +2,9 @@
 
 var assert = require('assert');
 var path = require('path');
-var bowercfg = require('bower-config').read();
 var cheerio = require('cheerio');
 var polymports = require('./');
+var basepath = 'fixture/components';
 
 function do_test(configs, cb) {
   var stream = polymports.src(configs);
@@ -13,13 +13,13 @@ function do_test(configs, cb) {
     var html = file.contents.toString();
     var $ = cheerio.load(html);
     var config = configs[file.path];
-    var basepath = config.basepath || bowercfg.directory
 
     assert(html);
     assert.equal($('link').length, config.imports.length);
 
     config.imports.forEach(function(name) {
-      var regex = new RegExp('<link rel="import" href="' + path.join(basepath, name, name + '.html') + '">', 'gi');
+      var href = path.join(basepath, name, name.indexOf('.html') >= 0 ? '' : name + '.html');
+      var regex = new RegExp('<link rel="import" href="' + href + '">', 'gi');
       assert(regex.test(html));
     })
 
@@ -32,20 +32,23 @@ function do_test(configs, cb) {
 
 it ('should generated links for configs object', function(cb) {
   var configs = {
-    "components.html": {
+    "bundle.html": {
       imports: [
         'core-scaffold',
         'core-toolbar',
-        'core-header-panel'
+        'core-header-panel',
+        "core-icons"
       ],
-      basepath: __dirname
+      basepath: basepath
     },
-    "components2.html": {
+    "bundle2.html": {
       imports: [
         'core-ajax',
         'core-animation',
-        'core-menu'
-      ]
+        'core-menu',
+        "core-icons/maps-icons.html"
+      ],
+      basepath: basepath
     }
   };
 

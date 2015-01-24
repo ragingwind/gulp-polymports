@@ -27,7 +27,7 @@
     "chrome"
   ],
   "dependencies": {
-    "bower-config": "^0.5.2",
+    "gulp-util": "^3.0.2",
     "through2": "^0.6.1",
     "vinyl": "^0.4.3"
   },

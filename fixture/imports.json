@@ -1,16 +1,20 @@
 {
-  "components_from_file.html": {
+  "bundle.html": {
     "imports": [
       "core-scaffold",
       "core-toolbar",
-      "core-header-panel"
-    ]
+      "core-header-panel",
+      "core-icons"
+    ],
+    "basepath": "fixture/components"
   },
-  "components2_from_file.html": {
+  "bundle2.html": {
     "imports": [
       "core-ajax",
       "core-animation",
-      "core-menu"
-    ]
+      "core-menu",
+      "core-icons/maps-icons.html"
+    ],
+    "basepath": "fixture/components"
   }
 }
