@@ -1,11 +1,11 @@
 {
   "name": "gulp-polymports",
   "version": "0.1.0",
-  "description": "Generate html having links for imports",
+  "description": "Generator a HTML having HTML Import links",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.comragingwind/gulp-polymports"
+    "url": "git://github.com/ragingwind/gulp-polymports"
   },
   "author": {
     "name": "Jimmy Moon",
@@ -22,6 +22,8 @@
     "index.js"
   ],
   "keywords": [
+    "polymer",
+    "vulcanize"
     "gulpplugin",
     "csp",
     "chrome"

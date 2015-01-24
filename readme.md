@@ -1,6 +1,6 @@
 # [gulp](http://gulpjs.com)-polymports
 
-> Generator a html having [HTML Import links](http://www.w3.org/TR/html-imports/#link-type-import) for Polymer elements
+> Generator a HTML having [HTML Import links](http://www.w3.org/TR/html-imports/#link-type-import) to pass it to vulcanize
 
 ## Install
 
@@ -61,4 +61,4 @@ Pass a new base path If you want to change to what you want to it, which is not 
 
 ## License
 
-MIT
+MIT @[ragingwind](http://github.com/ragingwind)
