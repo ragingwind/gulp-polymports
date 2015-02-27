@@ -53,6 +53,9 @@ module.exports = {
         path: filename,
         contents: new Buffer(output.join('\n'))
       }));
+
+      // flushing
+      process.nextTick(stream.end.bind(stream));
     });
 
     return stream;
