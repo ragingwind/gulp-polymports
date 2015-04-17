@@ -1,6 +1,6 @@
 {
   "name": "gulp-polymports",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Generator a HTML having HTML Import links",
   "license": "MIT",
   "repository": {
