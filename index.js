@@ -6,6 +6,7 @@ var bowercfg = require('bower-config').read();
 var File = require('vinyl');
 var fs = require('fs');
 var gutil = require('gulp-util');
+var mkdirp = require('mkdirp');
 
 module.exports = {
   src: function(configs) {
@@ -25,6 +26,7 @@ module.exports = {
     Object.keys(configs).forEach(function(filename) {
       var output = ['<!doctype html>', '<html>', '<head>'];
       var component = configs[filename];
+      var contents = '';
 
       if (!component.basepath) {
         component.basepath = bowercfg.directory;
@@ -46,12 +48,20 @@ module.exports = {
 
         output.push('\t<link rel="import" href="' + element + '">');
       });
-
       output.push('</head>', '</html>');
+
+      // convert to html text
+      contents = output.join('\n');
+
+      // dump file content to destination path
+      if (component.dest) {
+        mkdirp.sync(path.resolve(component.dest))
+        fs.writeFileSync(path.join(component.dest, filename), contents);
+      }
 
       stream.write(new File({
         path: filename,
-        contents: new Buffer(output.join('\n'))
+        contents: new Buffer(contents)
       }));
 
       // flushing

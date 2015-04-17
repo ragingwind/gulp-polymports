@@ -1,10 +1,12 @@
 'use strict';
 
 var assert = require('assert');
+var fs = require('fs');
 var path = require('path');
 var cheerio = require('cheerio');
 var polymports = require('./');
 var basepath = 'fixture/components';
+
 
 function do_test(configs, cb) {
   var stream = polymports.src(configs);
@@ -30,7 +32,7 @@ function do_test(configs, cb) {
   stream.end();
 }
 
-it ('should generated links for configs object', function(cb) {
+it ('should be generated links for configs object', function(cb) {
   var configs = {
     "bundle.html": {
       imports: [
@@ -55,6 +57,28 @@ it ('should generated links for configs object', function(cb) {
   do_test(configs, cb);
 });
 
-it ('should generated links for configs file', function(cb) {
+it ('should be generated links for configs file', function(cb) {
   do_test(require('./fixture/imports.json'), cb);
 });
+
+it ('should be created a file to destination', function(cb) {
+  do_test({
+    "bundle-out.html": {
+      imports: [
+        'core-ajax',
+        'core-animation',
+        'core-menu',
+        "core-icons/maps-icons.html"
+      ],
+      basepath: basepath,
+      dest: './tmp'
+    }
+  }, function() {
+    fs.exists('./tmp/bundle-out.html', function(exists) {
+      assert(exists);
+      cb();
+    })
+  });
+});
+
+
